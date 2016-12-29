@@ -1,0 +1,40 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.assgn3.chain";
+option java_outer_classname = "ChainProto";
+option objc_class_prefix = "CHN";
+
+package chain;
+
+// The chain service definition.
+service Chain {
+  //AddNode: u64 node_id
+  rpc AddNode (Node) returns (Reply) {}
+
+  //AddEdge: u64 node_a_id, u64 node_b_id
+  rpc AddEdge (Edge) returns (Reply) {}
+
+  //RemoveNode: u64 node_id
+  rpc RemoveNode (Node) returns (Reply) {}
+
+  //RemoveEdge: u64 node_a_id, u64 node_b_id
+  rpc RemoveEdge (Edge) returns (Reply) {}
+}
+
+// The node message containing the node id.
+message Node {
+  uint64 node_id = 1;
+}
+
+// The edge message containing two node id.
+message Edge {
+  uint64 node_a_id = 1;
+  uint64 node_b_id = 2;
+}
+
+// The response message containing the result.
+message Reply {
+  string message = 1;
+}

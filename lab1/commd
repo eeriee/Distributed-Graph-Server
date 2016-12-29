@@ -1,0 +1,21 @@
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_id":1}' http://104.154.135.33:8000/api/v1/add_node
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_id":2}' http://104.154.135.33:8000/api/v1/add_node
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_id":1}' http://104.154.135.33:8000/api/v1/add_node
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_id":3}' http://104.154.135.33:8000/api/v1/add_node
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_a_id":1, "node_b_id":2}' http://104.154.135.33:8000/api/v1/add_edge
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_a_id":1, "node_b_id":1}' http://104.154.135.33:8000/api/v1/add_edge
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_a_id":1, "node_b_id":3}' http://104.154.135.33:8000/api/v1/get_edge
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_a_id":1, "node_b_id":1}' http://104.154.135.33:8000/api/v1/get_edge
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_a_id":1, "node_b_id":1}' http://104.154.135.33:8000/api/v1/display
+curl -D - -H "Content-Type: application/json" -X POST -d '{"node_id":112}' http://104.154.135.33:8000/api/v1/get_neighbors
+
+./cs426_graph_server 8000 /dev/sdb
+
+/c/cs426/scripts/lab1test.sh http://104.154.135.33:8000
+
+make && ./cs426_graph_server 3000
+cd /c/cs426/SUBMIT/xw347-160921-171024
+
+/c/cs426/scripts/lab2test.sh http://104.154.135.33:8000
+
+scp -rp -i ~/.ssh/my-ssh-key /Users/eeriee/desktop/assign2_6 gxtogether@104.154.135.33:~
